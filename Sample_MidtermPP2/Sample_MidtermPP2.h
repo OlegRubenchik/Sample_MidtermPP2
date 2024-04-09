@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <string>
 using namespace std;
 /*Question 1:
 (a) Write a void function readArray that takes a one-dimensional array A and an integer number n and
@@ -184,7 +185,7 @@ name (string)
 year (int)
 CPA (float)
 */
-class stusent {
+class student {
 public:
 	string name;
 	int year;
@@ -194,3 +195,36 @@ public:
 /*(b) Hence write the following functions:
 (i) void readStudents(student s[], int n) that prompts the user to enter the
 information of n students.*/
+void readStudents(student s[], int n) {
+	for (int i = 0; i < n; i++) {
+	
+		cout << "STUDENT " << i << '\n';
+		cout << "NAME: ";
+		getline(cin, s[i].name);
+		cout << "YEAR: ";
+		cin >> s[i].year;
+		cout << "CPA: ";
+		cin >> s[i].CPA;
+		cin.ignore();
+	}
+}
+/*(ii) float averageCPA(student s[], int n) that calculates and returns the average CPA
+of n students.
+*/
+float averageCPA(student s[], int n) {
+	float avg = 0;
+	for (int i = 0; i < n; i++) {
+		avg += s[i].CPA;
+	}
+	return avg / n;
+}
+/*(iii) The main() program that has an array of 100 students and uses the above functions to
+read the information of 100 students and display their average CPA.*/
+void MIDSAMP_EX6() {
+	const int n = 2;
+	float average;
+	student studs[n];
+	readStudents(studs, n);
+	average = averageCPA(studs, n);
+	cout << "Average CPA: " << average;
+}
